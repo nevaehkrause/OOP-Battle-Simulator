@@ -1,12 +1,15 @@
 from enemy import Enemy
 import random
 
-class boss(Enemy):
-    def __init__(self, name, level):
+class Jimmy(Enemy):
+    def __init__(self, name):
         super().__init__(name)
-        self.level = level
-        self.health = 200 + (level * 50)
-        self.attack_power = random.randint(10, 25) + (level * 5)
+        self.attack_power = random.randint(10, 20)
+        self.health = 250
 
-    def roar(self):
-        print(f"{self.name} lets out a terrifying roar!")
+    def attack(self):
+        if self.health < 50:
+            self.attack_power = random.randint(1, 5)
+        elif self.health < 100:
+            self.attack_power = random.randint(5, 10)
+        return random.randint(5, self.attack_power)
